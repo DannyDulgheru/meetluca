@@ -30,6 +30,23 @@ export default function Home() {
           </Link>
         </Button>
       </div>
+      <div className="absolute bottom-8 z-10 flex space-x-4">
+        <Button asChild size="icon" className="animate-fade-in [animation-delay:0.6s] bg-white/10 border border-white/20 backdrop-blur-sm text-white hover:bg-white/20 font-bold">
+          <Link href="https://quorbik.com" target="_blank" rel="noopener noreferrer">
+            Q
+          </Link>
+        </Button>
+        <Button asChild size="icon" className="animate-fade-in [animation-delay:0.8s] bg-white/10 border border-white/20 backdrop-blur-sm text-white hover:bg-white/20 font-bold">
+          <Link href="https://dulgheru.digital" target="_blank" rel="noopener noreferrer">
+            DD
+          </Link>
+        </Button>
+        <Button asChild size="icon" className="animate-fade-in [animation-delay:1.0s] bg-white/10 border border-white/20 backdrop-blur-sm text-white hover:bg-white/20 font-bold">
+          <Link href="https://motion.dulgheru.digital" target="_blank" rel="noopener noreferrer">
+            MD
+          </Link>
+        </Button>
+      </div>
     </main>
   );
 }
