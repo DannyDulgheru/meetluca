@@ -19,7 +19,7 @@ export default function Home() {
         <h1 className="animate-fade-in-down font-headline text-5xl font-bold text-foreground drop-shadow-lg md:text-7xl">
           MeetLuca Agency
         </h1>
-        <p className="font-body text-md animate-fade-in-up [animation-delay:0.2s] mt-4 max-w-lg text-foreground drop-shadow-md md:text-lg">
+        <p className="font-body text-md animate-fade-in-up [animation-delay:0.2s] mt-4 max-w-lg text-foreground/80 drop-shadow-md md:text-lg">
           A modern SaaS Company based in Chisinau, Moldova, crafting digital solutions for the future.
         </p>
         <Button asChild size="lg" className="animate-fade-in [animation-delay:0.4s] mt-8 bg-white/10 border border-white/20 backdrop-blur-sm text-white hover:bg-white/20">
