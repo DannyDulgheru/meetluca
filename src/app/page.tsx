@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <main className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden">
       <ThreeScene />
-      <div className="absolute inset-0 z-0 bg-black/30" />
+      <div className="absolute inset-0 z-0 bg-black/50" />
       <div className="relative z-10 flex flex-col items-center justify-center p-4 text-center">
         <h1 className="animate-fade-in-down font-headline text-5xl font-bold text-foreground drop-shadow-lg md:text-7xl">
           MeetLuca Agency
