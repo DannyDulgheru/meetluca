@@ -18,7 +18,7 @@ const ThreeScene = () => {
 
     // Camera
     const camera = new THREE.PerspectiveCamera(75, currentMount.clientWidth / currentMount.clientHeight, 0.1, 1000);
-    camera.position.z = 4;
+    camera.position.z = 5;
 
     // Renderer
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -26,23 +26,32 @@ const ThreeScene = () => {
     renderer.setPixelRatio(window.devicePixelRatio);
     currentMount.appendChild(renderer.domElement);
 
-    // Geometry & Material
-    const geometry = new THREE.TorusKnotGeometry(1.2, 0.35, 128, 16);
-    const material = new THREE.MeshStandardMaterial({
-      color: 0xBE2EDD,
-      metalness: 0.8,
-      roughness: 0.3,
-      emissive: 0x100814,
+    // Particle Geometry & Material
+    const particleCount = 5000;
+    const positions = new Float32Array(particleCount * 3);
+    for (let i = 0; i < particleCount * 3; i++) {
+        positions[i] = (Math.random() - 0.5) * 10;
+    }
+    const particlesGeometry = new THREE.BufferGeometry();
+    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    
+    const particlesMaterial = new THREE.PointsMaterial({
+        color: 0xBE2EDD,
+        size: 0.02,
+        blending: THREE.AdditiveBlending,
+        transparent: true,
+        sizeAttenuation: true,
     });
-    const torusKnot = new THREE.Mesh(geometry, material);
-    scene.add(torusKnot);
+    
+    const particles = new THREE.Points(particlesGeometry, particlesMaterial);
+    scene.add(particles);
 
     // Lights
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
     scene.add(ambientLight);
 
-    const pointLight = new THREE.PointLight(0xffffff, 1.5, 100);
-    pointLight.position.set(2, 3, 4);
+    const pointLight = new THREE.PointLight(0xffffff, 1, 100);
+    pointLight.position.set(0, 0, 0);
     scene.add(pointLight);
 
     // Mouse movement
@@ -60,11 +69,17 @@ const ThreeScene = () => {
 
       const elapsedTime = clock.getElapsedTime();
 
-      torusKnot.rotation.y = elapsedTime * 0.2;
-      torusKnot.rotation.x = elapsedTime * 0.1;
+      // Animate particles
+      particles.rotation.y = elapsedTime * 0.1;
+      particles.rotation.x = elapsedTime * 0.05;
 
-      pointLight.position.x = mouse.x * 5;
-      pointLight.position.y = mouse.y * 5;
+
+      // Make light follow mouse
+      const cameraPosition = new THREE.Vector3();
+      camera.getWorldPosition(cameraPosition);
+      const target = new THREE.Vector3(mouse.x * 2, mouse.y * 2, camera.position.z - 2);
+      pointLight.position.lerp(target, 0.1);
+
 
       renderer.render(scene, camera);
     };
@@ -87,8 +102,8 @@ const ThreeScene = () => {
       if (currentMount) {
         currentMount.removeChild(renderer.domElement);
       }
-      geometry.dispose();
-      material.dispose();
+      particlesGeometry.dispose();
+      particlesMaterial.dispose();
       renderer.dispose();
     };
   }, []);
