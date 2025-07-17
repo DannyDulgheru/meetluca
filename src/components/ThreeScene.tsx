@@ -36,7 +36,7 @@ const ThreeScene = () => {
     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
     
     const particlesMaterial = new THREE.PointsMaterial({
-        color: 0xBE2EDD,
+        color: 0x9f54e1,
         size: 0.02,
         blending: THREE.AdditiveBlending,
         transparent: true,
