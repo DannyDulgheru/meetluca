@@ -16,10 +16,10 @@ export default function Home() {
     <main className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden">
       <ThreeScene />
       <div className="relative z-10 flex flex-col items-center justify-center p-4 text-center">
-        <h1 className="animate-fade-in-down font-headline text-5xl font-bold text-foreground md:text-7xl">
+        <h1 className="animate-fade-in-down font-headline text-5xl font-bold text-foreground drop-shadow-lg md:text-7xl">
           MeetLuca Agency
         </h1>
-        <p className="font-body text-md animate-fade-in-up [animation-delay:0.2s] mt-4 max-w-lg text-muted-foreground md:text-lg">
+        <p className="font-body text-md animate-fade-in-up [animation-delay:0.2s] mt-4 max-w-lg text-muted-foreground drop-shadow-md md:text-lg">
           A modern SaaS Company based in Chisinau, Moldova, crafting digital solutions for the future.
         </p>
         <Button asChild size="lg" className="animate-fade-in [animation-delay:0.4s] mt-8">
